@@ -12,9 +12,10 @@ WORKDIR /usr/src/app/
 
 # Install dependencies
 COPY package.json /usr/src/app/
+RUN npm install -g serve
 RUN npm config set registry http://registry.npmjs.org/ && npm install
 
 ADD . /usr/src/app/
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+EXPOSE 5000
+CMD [ "serve", "-s", "build" ]
